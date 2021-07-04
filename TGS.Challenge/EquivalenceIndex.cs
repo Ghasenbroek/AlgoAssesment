@@ -19,59 +19,58 @@ namespace TGS.Challenge
   {
     public int Find(int[] numbers)
     {
-      int left, right;
-      int index = 0;
-      var numberCount = numbers.Length - 1;
+      int equivalenceIndex = 0;
+      var arrayCount = numbers.Length - 1;
 
-      while (index <= numberCount)
+      while (equivalenceIndex <= arrayCount)
       {
-        left = 0;
-        right = 0;
+        int leftTotal = 0;
+        int rightTotal = 0;
 
-        left = CalculateLeft(numbers, left, index, numberCount);
-        right = CalculateRight(numbers, right, index, numberCount);
+        leftTotal = CalculateLeftTota(numbers, leftTotal, equivalenceIndex, arrayCount);
+        rightTotal = CalculateRightTotal(numbers, rightTotal, equivalenceIndex, arrayCount);
 
-        if (left == right)
+        if (leftTotal == rightTotal)
         {
-          return index;
+          return equivalenceIndex;
         }
-        if (index == numberCount)
+        if (equivalenceIndex == arrayCount)
         {
-          index = -1;
-          return index;
+          equivalenceIndex = -1;
+          return equivalenceIndex;
         }
-        index += 1;
+        equivalenceIndex += 1;
       }
 
-      return index;
+      return equivalenceIndex;
     }
 
-    private static int CalculateRight(int[] numbers, int right, int index, int numberCount)
+    private static int CalculateLeftTota(int[] numbers, int leftTotal, int equivalenceIndex, int arrayCount)
     {
-      for (int i = numberCount; i >= 0; i--)
+      for (int i = 0; i < arrayCount; i++)
       {
-        if (i <= index)
+        if (i >= equivalenceIndex)
         {
           break;
         }
-        right += numbers[i];
+        leftTotal += numbers[i];
       }
 
-      return right;
+      return leftTotal;
     }
 
-    private static int CalculateLeft(int[] numbers, int left, int index, int numberCount)
+    private static int CalculateRightTotal(int[] numbers, int rightTotal, int equivalenceIndex, int arrayCount)
     {
-      for (int i = 0; i < numberCount; i++)
+      for (int i = arrayCount; i >= 0; i--)
       {
-        if (i >= index)
+        if (i <= equivalenceIndex)
         {
           break;
         }
-        left += numbers[i];
+        rightTotal += numbers[i];
       }
 
-      return left;
+      return rightTotal;
     }
   }
 }
