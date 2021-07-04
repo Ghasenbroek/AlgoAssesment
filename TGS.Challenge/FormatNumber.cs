@@ -30,7 +30,7 @@ namespace TGS.Challenge
       {
         throw new ArgumentOutOfRangeException();
       }
-      var digitArray = ReverseNumber(value);     
+      var digitArray = ReverseValueToCharArray(value);     
 
       return GetFormattedString(digitArray);
     }
@@ -51,7 +51,7 @@ namespace TGS.Challenge
       return result;
     }
 
-    private char[] ReverseNumber(int value)
+    private char[] ReverseValueToCharArray(int value)
     {
       string stringValue = $"{value}";
       var digitArray = stringValue.ToCharArray();
