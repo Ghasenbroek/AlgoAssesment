@@ -17,6 +17,12 @@ namespace TGS.Challenge
 
   public class EquivalenceIndex
   {
+
+    /// <summary>
+    /// Finds the Equivalence index of the given int array
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns>The Equivalence Index of the given array</returns>
     public int Find(int[] numbers)
     {
       int equivalenceIndex = 0;
@@ -27,7 +33,7 @@ namespace TGS.Challenge
         int leftTotal = 0;
         int rightTotal = 0;
 
-        leftTotal = CalculateLeftTota(numbers, leftTotal, equivalenceIndex, arrayCount);
+        leftTotal = CalculateLeftTotal(numbers, leftTotal, equivalenceIndex, arrayCount);
         rightTotal = CalculateRightTotal(numbers, rightTotal, equivalenceIndex, arrayCount);
 
         if (leftTotal == rightTotal)
@@ -45,7 +51,15 @@ namespace TGS.Challenge
       return equivalenceIndex;
     }
 
-    private static int CalculateLeftTota(int[] numbers, int leftTotal, int equivalenceIndex, int arrayCount)
+    /// <summary>
+    /// Calculates the values to the left of the equivalence index
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <param name="leftTotal"></param>
+    /// <param name="equivalenceIndex"></param>
+    /// <param name="arrayCount"></param>
+    /// <returns>The sum of the values to the left of the equivalence index</returns>
+    private static int CalculateLeftTotal(int[] numbers, int leftTotal, int equivalenceIndex, int arrayCount)
     {
       for (int i = 0; i < arrayCount; i++)
       {
@@ -59,6 +73,14 @@ namespace TGS.Challenge
       return leftTotal;
     }
 
+    /// <summary>
+    /// Calculates the values to the right of the equivalence index
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <param name="rightTotal"></param>
+    /// <param name="equivalenceIndex"></param>
+    /// <param name="arrayCount"></param>
+    /// <returns>The sum of the values to the right of the equivalence index</returns>
     private static int CalculateRightTotal(int[] numbers, int rightTotal, int equivalenceIndex, int arrayCount)
     {
       for (int i = arrayCount; i >= 0; i--)

@@ -25,8 +25,14 @@ namespace TGS.Challenge
      */
 	public class Anagram
 	{
-		private static readonly List<char> SpecialChars = new List<char> { '+', '&', '|', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':', '\\', '/', '_', ' ' };
-		
+		private static readonly List<char> _SpecialChars = new List<char> { '+', '&', '|', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':', '\\', '/', '_', ' ' };
+
+		/// <summary>
+		/// Checks to see if two strings are Anagrams of one another
+		/// </summary>
+		/// <param name="firstAnagram"></param>
+		/// <param name="secondAnagram"></param>
+		/// <returns>Boolean</returns>
 		public bool AreAnagrams(string firstAnagram, string secondAnagram)
 		{
 			try
@@ -43,9 +49,14 @@ namespace TGS.Challenge
 			}
 		}
 
-		public char[] RemoveSpecialCharacters(string word)
+		/// <summary>
+		/// Removes Special Characters and sorts the array
+		/// </summary>
+		/// <param name="word"></param>
+		/// <returns>A sorted Character array</returns>
+		private char[] RemoveSpecialCharacters(string word)
 		{
-			foreach (var character in SpecialChars)
+			foreach (var character in _SpecialChars)
 			{
 				if (word.Contains(character))
 				{
@@ -58,6 +69,11 @@ namespace TGS.Challenge
 			return result;
 		}
 
+		/// <summary>
+		/// Checks if both Anagrams are valid
+		/// </summary>
+		/// <param name="firstAnagram"></param>
+		/// <param name="secondAnagram"></param>
 		private void AreAnagramsValid(string firstAnagram, string secondAnagram)
     {
 			if (firstAnagram == string.Empty || secondAnagram == string.Empty)

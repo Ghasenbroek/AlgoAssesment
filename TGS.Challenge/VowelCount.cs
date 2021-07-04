@@ -14,6 +14,12 @@ namespace TGS.Challenge
    */
   public class VowelCount
   {
+
+    /// <summary>
+    /// Counts the amount of vowels in a string
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns>The count of vowels in the given value</returns>
     public int Count(string value)
     {
       if (value == string.Empty)
@@ -24,6 +30,11 @@ namespace TGS.Challenge
       return CountVowels(chars);
     }
 
+    /// <summary>
+    /// Counts the amount of vowels in a char array
+    /// </summary>
+    /// <param name="chars"></param>
+    /// <returns>The count of vowels in the given char array</returns>
     private int CountVowels(char[] chars)
     {
       int vowelCounter = 0;

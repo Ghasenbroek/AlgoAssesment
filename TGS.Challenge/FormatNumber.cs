@@ -24,6 +24,11 @@ namespace TGS.Challenge
    */
   public class FormatNumber
   {
+    /// <summary>
+    /// Formats the int value to a string with thousand separators
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns>A string value that is thousand separated</returns>
     public string Format(int value)
     {
       if (value > 999999999 || value < 0)
@@ -35,6 +40,11 @@ namespace TGS.Challenge
       return GetFormattedString(digitArray);
     }
 
+    /// <summary>
+    /// Formats the char array to string with comma seperation
+    /// </summary>
+    /// <param name="digitArray"></param>
+    /// <returns>A comma separated string</returns>
     private string GetFormattedString(char[] digitArray)
     {
       string result = "";
@@ -51,6 +61,11 @@ namespace TGS.Challenge
       return result;
     }
 
+    /// <summary>
+    /// Reverses the int value to a char array
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns>Reversed char array of value</returns>
     private char[] ReverseValueToCharArray(int value)
     {
       string stringValue = $"{value}";
