@@ -36,7 +36,6 @@ namespace TGS.Challenge.Tests
     [Test()]
     public void Funeral_Is_NOT_Anagram_Reel_fun()
     {
-      // I changed this unit test based on the below strings but 'Reel fun' could have just been made into 'Real fun'
       var result = _anagram.AreAnagrams("Funeral", "Reel fun");
 
       Assert.IsFalse(result);
