@@ -21,6 +21,11 @@ namespace TGS.Challenge
         throw new ArgumentException();
       }
       var chars = value.ToLower().ToCharArray();
+      return CountVowels(chars);
+    }
+
+    private int CountVowels(char[] chars)
+    {
       int vowelCounter = 0;
       foreach (var item in chars)
       {
