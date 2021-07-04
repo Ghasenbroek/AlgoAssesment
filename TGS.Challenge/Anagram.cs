@@ -27,39 +27,43 @@ namespace TGS.Challenge
 	{
 		private static readonly List<char> SpecialChars = new List<char> { '+', '&', '|', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':', '\\', '/', '_', ' ' };
 		
-		public bool AreAnagrams(string first, string second)
+		public bool AreAnagrams(string firstAnagram, string secondAnagram)
 		{
 			try
 			{
-				var firstCharArray = RemoveChars(first);
-				var secondCharArray = RemoveChars(second);
-
-				Array.Sort<char>(firstCharArray);
-				Array.Sort<char>(secondCharArray);
+				AreAnagramsValid(firstAnagram, secondAnagram);
+				var firstCharArray = RemoveSpecialCharacters(firstAnagram);
+				var secondCharArray = RemoveSpecialCharacters(secondAnagram);
 
 				return string.Equals(new string(firstCharArray), new string(secondCharArray));
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				throw new ArgumentException();
 			}
 		}
 
-		public char[] RemoveChars(string word)
+		public char[] RemoveSpecialCharacters(string word)
 		{
-			if (word == string.Empty)
-			{
-				throw new ArgumentException();
-			}
 			foreach (var character in SpecialChars)
 			{
 				if (word.Contains(character))
 				{
-					word = word.Replace(character.ToString(), "");
+					word = word.Replace(character.ToString(), string.Empty);
 				}
 			}
+			var result = word.ToLower().ToCharArray();
+			Array.Sort<char>(result);
 
-			return word.ToLower().ToCharArray();
+			return result;
+		}
+
+		private void AreAnagramsValid(string firstAnagram, string secondAnagram)
+    {
+			if (firstAnagram == string.Empty || secondAnagram == string.Empty)
+			{
+				throw new ArgumentException();
+			}
 		}
 	}
 }
